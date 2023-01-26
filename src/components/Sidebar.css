@@ -1,0 +1,12 @@
+.sidebar {
+  background-color: rgb(247, 247, 247);
+  width: 20vw;
+  height: 95vh;
+}
+
+ul {
+  margin: 0;
+  padding-top: 4.5vh;
+  padding-left: 5vw;
+  line-height: 5vh;
+}

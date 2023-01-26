@@ -1,0 +1,15 @@
+.top-navbar {
+  background-color: rgb(219, 76, 63);
+  color: white;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-left,
+.nav-right {
+  width: 10vw;
+  padding: 0.5vw 2vw 0.5vw 2vw;
+  display: flex;
+  gap: 2vw;
+}

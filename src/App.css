@@ -1,0 +1,8 @@
+#root {
+  max-width: 1280px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
