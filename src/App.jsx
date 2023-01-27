@@ -5,8 +5,8 @@ import Sidebar from './components/Sidebar';
 import Body from './components/Body';
 
 function App() {
+  // Use state to track the sidebar
   const [showSidebar, setShowSidebar] = useState(true);
-  console.log('now +' + showSidebar);
 
   return (
     <div className="body">
