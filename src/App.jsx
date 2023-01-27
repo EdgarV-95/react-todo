@@ -5,15 +5,20 @@ import Sidebar from './components/Sidebar';
 import Body from './components/Body';
 
 function App() {
+  const [showSidebar, setShowSidebar] = useState(true);
+  console.log('now +' + showSidebar);
+
   return (
     <div className="body">
-      <Header />
+      <Header
+        showSidebar={showSidebar}
+        onSidebarToggle={() => setShowSidebar(!showSidebar)}
+      />
       <div className="main-section">
-        <Sidebar />
+        {showSidebar && <Sidebar />}
         <Body />
       </div>
     </div>
   );
 }
-
 export default App;
