@@ -1,12 +1,41 @@
 .sidebar {
   background-color: rgb(247, 247, 247);
-  width: 20vw;
+  width: 22.2vw;
   height: 95vh;
 }
 
 ul {
+  list-style-type: none;
   margin: 0;
-  padding-top: 4.5vh;
-  padding-left: 5vw;
-  line-height: 5vh;
+  padding-top: 2.5vh;
+  padding-left: 5.1vw;
+}
+
+.icon {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1vw;
+}
+
+.inbox-icon {
+  color: rgb(138, 177, 235);
+}
+
+.today-icon {
+  color: rgb(64, 144, 108);
+}
+
+.projects-icon {
+  color: rgb(118, 66, 199);
+}
+
+.new-project {
+  padding-top: 2vh;
+  padding-left: 1.5vw;
+}
+
+h4 {
+  cursor: pointer;
 }

@@ -9,7 +9,7 @@
 .nav-left,
 .nav-right {
   width: 10vw;
-  padding: 0.5vw 2vw 0.5vw 2vw;
+  padding: 0.5vw 5vw 0.5vw 5vw;
   display: flex;
   gap: 2vw;
 }
