@@ -27,3 +27,5 @@ export default function Body() {
     </div>
   );
 }
+
+// Need to find a way to append newly added tasks in localStorage rather than losing them on refresh
