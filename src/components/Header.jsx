@@ -12,11 +12,7 @@ export default function Header({ showSidebar, onSidebarToggle }) {
   return (
     <div className="top-navbar">
       <div className="nav-left">
-        <div
-          onClick={() => {
-            onSidebarToggle(showSidebar);
-          }}
-        >
+        <div onClick={() => onSidebarToggle(showSidebar)}>
           <MenuIcon sx={{ fontSize: 30 }} />
         </div>
         <div onClick={() => console.log('Takes you back home')}>
