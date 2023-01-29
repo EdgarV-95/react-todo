@@ -6,3 +6,20 @@
 .title-txt {
   font-size: 3vh;
 }
+
+.tasks-list {
+  font-size: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.task {
+  border: 1px solid black;
+  width: 50vw;
+  height: 3.5vh;
+  padding: 0.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -11,13 +11,21 @@ export default function Body() {
     <div className="main-body">
       <h2 className="title-txt">Today</h2>
       {tasks && (
-        <ul>
+        <ul className="tasks-list">
           {tasks.map((task) => {
             return (
-              <li key={task.id}>
-                {task.titleValue} {task.descriptionValue}{' '}
-                {task.dateValue} {task.priorityValue}{' '}
-                {task.projectValue}
+              <li key={task.id} className="task">
+                <div className="task-title">{task.titleValue}</div>
+                <div className="task-description">
+                  {task.descriptionValue}
+                </div>
+                <div className="task-date">{task.dateValue}</div>
+                <div className="task-priority">
+                  {task.priorityValue}
+                </div>
+                <div className="task-project">
+                  {task.projectValue}
+                </div>
               </li>
             );
           })}

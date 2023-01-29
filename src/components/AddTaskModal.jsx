@@ -127,7 +127,7 @@ export default function AddTaskModal({ closeModal }) {
               });
               localStorage.setItem('tasks', JSON.stringify(tasks));
               closeModal();
-              // Very ugly fix for adding tasks to the body tag
+              // Very ugly fix for adding tasks to Body.jsx
               location.reload();
             }}
           >
