@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AddTaskModal.css';
 import {
   TextField,
@@ -11,8 +11,6 @@ import {
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
-const tasks = [];
-
 export default function AddTaskModal({ closeModal }) {
   const currentDate = new Date()
     .toLocaleDateString('en-GB')
@@ -24,6 +22,21 @@ export default function AddTaskModal({ closeModal }) {
   const [descriptionValue, setDescriptionValuel] = useState('');
   const [priorityValue, setPriorityValue] = useState('');
   const [projectValue, setProjectValue] = useState('');
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('tasks');
+    if (data !== null) setTasks(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    if (tasks.length > 1) {
+      window.localStorage.setItem('tasks', JSON.stringify(tasks));
+    } else {
+      return;
+    }
+  }, [tasks]);
 
   return (
     <div className="modal-background">
@@ -112,8 +125,10 @@ export default function AddTaskModal({ closeModal }) {
                 priorityValue,
                 projectValue,
               });
-              localStorage.setItem('task', JSON.stringify(tasks));
+              localStorage.setItem('tasks', JSON.stringify(tasks));
               closeModal();
+              // Very ugly fix for adding tasks to the body tag
+              location.reload();
             }}
           >
             Submit

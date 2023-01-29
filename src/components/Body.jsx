@@ -3,11 +3,10 @@ import './Body.css';
 
 export default function Body() {
   let tasks;
-  if (localStorage.getItem('task')) {
-    tasks = Object.values(JSON.parse(localStorage.getItem('task')));
-  } else {
-    console.log('no');
+  if (localStorage.getItem('tasks')) {
+    tasks = Object.values(JSON.parse(localStorage.getItem('tasks')));
   }
+
   return (
     <div className="main-body">
       <h2 className="title-txt">Today</h2>
@@ -27,5 +26,3 @@ export default function Body() {
     </div>
   );
 }
-
-// Need to find a way to append newly added tasks in localStorage rather than losing them on refresh
