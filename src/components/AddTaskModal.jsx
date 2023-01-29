@@ -9,6 +9,7 @@ import {
   FormControl,
   Select,
 } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
 const tasks = [];
 
@@ -103,13 +104,14 @@ export default function AddTaskModal({ closeModal }) {
           <button onClick={closeModal}>Close</button>
           <button
             onClick={() => {
-              tasks.push(
+              tasks.push({
+                id: uuidv4(),
                 titleValue,
                 descriptionValue,
                 dateValue,
                 priorityValue,
-                projectValue
-              );
+                projectValue,
+              });
               localStorage.setItem('task', JSON.stringify(tasks));
               closeModal();
             }}
