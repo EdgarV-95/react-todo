@@ -6,6 +6,19 @@ import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOu
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
+function PriorityPicker() {
+  console.log('here');
+  return (
+    <>
+      <ul className="bazdmeg">
+        <li>Low</li>
+        <li>Medium</li>
+        <li>High</li>
+      </ul>
+    </>
+  );
+}
+
 export default function Body() {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem('tasks') || '[]')
@@ -15,6 +28,12 @@ export default function Body() {
     let newTasks = tasks.filter((t) => t.id !== idValue);
     localStorage.setItem('tasks', JSON.stringify(newTasks));
     setTasks(newTasks);
+  }
+
+  const [click, setClick] = useState(false);
+  function handlePriority(value) {
+    // Create component to select new priority and save it to body and localstorage
+    if (value) setClick(!click);
   }
 
   return (
@@ -31,7 +50,14 @@ export default function Body() {
                 </div>
                 <div className="task-right">
                   <EditOutlinedIcon className="task-edit" />
-                  <FlagIcon className="task-priority" />
+                  <FlagIcon
+                    className="task-priority"
+                    onClick={() => {
+                      console.log(click);
+                      handlePriority(task.priorityValue);
+                    }}
+                  />
+                  {click && <PriorityPicker />}
                   <ArrowCircleRightOutlinedIcon className="task-project" />
                   <DeleteOutlineOutlinedIcon
                     className="task-delete"
