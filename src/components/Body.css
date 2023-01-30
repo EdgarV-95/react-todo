@@ -15,11 +15,21 @@
 }
 
 .task {
-  border: 1px solid black;
+  border-bottom: 0.2px solid rgb(216, 213, 213);
   width: 50vw;
-  height: 3.5vh;
-  padding: 0.5vh;
+  height: 3vh;
+  padding: 0.5vh 1vw 0.5vh 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.task-left {
+  display: flex;
+  gap: 2.5vw;
+}
+
+.task-right {
+  display: flex;
+  gap: 1vw;
 }

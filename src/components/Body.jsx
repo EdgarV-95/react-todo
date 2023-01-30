@@ -1,5 +1,10 @@
 import React from 'react';
 import './Body.css';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import FlagIcon from '@mui/icons-material/Flag';
+import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
 export default function Body() {
   let tasks;
@@ -15,16 +20,15 @@ export default function Body() {
           {tasks.map((task) => {
             return (
               <li key={task.id} className="task">
-                <div className="task-title">{task.titleValue}</div>
-                <div className="task-description">
-                  {task.descriptionValue}
+                <div className="task-left">
+                  <CheckCircleOutlineOutlinedIcon className="task-done" />
+                  <div className="task-title">{task.titleValue}</div>
                 </div>
-                <div className="task-date">{task.dateValue}</div>
-                <div className="task-priority">
-                  {task.priorityValue}
-                </div>
-                <div className="task-project">
-                  {task.projectValue}
+                <div className="task-right">
+                  <EditOutlinedIcon className="task-edit" />
+                  <FlagIcon className="task-priority" />
+                  <ArrowCircleRightOutlinedIcon className="task-project" />
+                  <DeleteOutlineOutlinedIcon className="task-delete" />
                 </div>
               </li>
             );
