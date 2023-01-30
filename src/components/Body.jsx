@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Body.css';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import FlagIcon from '@mui/icons-material/Flag';
@@ -7,9 +7,14 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
 export default function Body() {
-  let tasks;
-  if (localStorage.getItem('tasks')) {
-    tasks = Object.values(JSON.parse(localStorage.getItem('tasks')));
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem('tasks') || '[]')
+  );
+
+  function handleDelete(idValue) {
+    let newTasks = tasks.filter((t) => t.id !== idValue);
+    localStorage.setItem('tasks', JSON.stringify(newTasks));
+    setTasks(newTasks);
   }
 
   return (
@@ -28,7 +33,10 @@ export default function Body() {
                   <EditOutlinedIcon className="task-edit" />
                   <FlagIcon className="task-priority" />
                   <ArrowCircleRightOutlinedIcon className="task-project" />
-                  <DeleteOutlineOutlinedIcon className="task-delete" />
+                  <DeleteOutlineOutlinedIcon
+                    className="task-delete"
+                    onClick={() => handleDelete(task.id)}
+                  />
                 </div>
               </li>
             );
