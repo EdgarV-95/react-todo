@@ -49,3 +49,11 @@
   z-index: 1;
   right: 24.5vw;
 }
+
+ul div.info {
+  display: none;
+}
+
+.info.clicked {
+  display: flex;
+}
