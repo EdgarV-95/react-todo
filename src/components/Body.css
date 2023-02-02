@@ -39,21 +39,33 @@
   justify-content: end;
 }
 
-.bazdmeg {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid black;
-  border-radius: 1vh;
-  padding: 0.35vh;
-  width: 6vw;
-  position: absolute;
-  z-index: 1;
-  right: 24.5vw;
-}
-
 ul div.info {
   display: none;
 }
 
 .info.clicked {
   display: flex;
+}
+
+.select-priority {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 1vh;
+  padding: 1vh;
+  width: 6vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75vh;
+  position: absolute;
+  z-index: 1;
+  right: 24.5vw;
+}
+
+.select-priority > li {
+  padding-left: 0.75vw;
+}
+
+.select-priority > li:hover {
+  border: 1px solid red;
+  border-radius: 1vh;
 }
