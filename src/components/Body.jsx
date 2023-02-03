@@ -7,12 +7,40 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
 function PriorityPicker() {
+  function handlePrioritySelection(e) {
+    // // Get priority picker value
+    // console.log(e.target.innerHTML.toLowerCase());
+    // // Get the id of the task the priority picker was used on
+    // console.log(
+    //   e.target.parentNode.parentNode.parentNode.parentNode.dataset.key
+    // );
+    // // Get the obj in localStorage the ID corresponds too
+    let test = localStorage.getItem('tasks');
+    let convertToObj = JSON.parse(test);
+    let newArr = convertToObj.map((obj) => obj.id);
+    let filteredValue = newArr.filter(
+      (o) =>
+        o.id ==
+        e.target.parentNode.parentNode.parentNode.parentNode.dataset
+          .key
+    );
+    console.log(newArr);
+    // console.log(
+    //   e.target.parentNode.parentNode.parentNode.parentNode.dataset.key
+    // );
+  }
   return (
     <>
       <ul className="select-priority">
-        <li key="0">Low</li>
-        <li key="1">Medium</li>
-        <li key="2">High</li>
+        <li key="0" onClick={(e) => handlePrioritySelection(e)}>
+          Low
+        </li>
+        <li key="1" onClick={(e) => handlePrioritySelection(e)}>
+          Medium
+        </li>
+        <li key="2" onClick={(e) => handlePrioritySelection(e)}>
+          High
+        </li>
       </ul>
     </>
   );
@@ -30,7 +58,7 @@ export default function Body() {
   }
 
   const [click, setClick] = useState();
-  function handlePriority(idValue) {
+  function toggleClick(idValue) {
     if (click === idValue) {
       setClick();
     } else {
@@ -45,7 +73,7 @@ export default function Body() {
         <ul className="tasks-list">
           {tasks.map((task) => {
             return (
-              <li key={task.id} className="task">
+              <li key={task.id} data-key={task.id} className="task">
                 <div className="task-left">
                   <CheckCircleOutlineOutlinedIcon className="task-done" />
                   <div className="task-title">{task.titleValue}</div>
@@ -62,7 +90,7 @@ export default function Body() {
                   <div className="task-priority">
                     <FlagIcon
                       onClick={() => {
-                        handlePriority(task.id);
+                        toggleClick(task.id);
                       }}
                     />
                   </div>
