@@ -9,25 +9,24 @@ import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutli
 function PriorityPicker() {
   function handlePrioritySelection(e) {
     // // Get priority picker value
-    // console.log(e.target.innerHTML.toLowerCase());
+    let priorityPickerValue = e.target.innerHTML.toLowerCase();
     // // Get the id of the task the priority picker was used on
-    // console.log(
-    //   e.target.parentNode.parentNode.parentNode.parentNode.dataset.key
-    // );
+    let taskId =
+      e.target.parentNode.parentNode.parentNode.parentNode.dataset
+        .key;
     // // Get the obj in localStorage the ID corresponds too
-    let test = localStorage.getItem('tasks');
-    let convertToObj = JSON.parse(test);
-    let newArr = convertToObj.map((obj) => obj.id);
-    let filteredValue = newArr.filter(
-      (o) =>
-        o.id ==
-        e.target.parentNode.parentNode.parentNode.parentNode.dataset
-          .key
+    let newObj = Object.values(
+      JSON.parse(localStorage.getItem('tasks'))
     );
-    console.log(newArr);
-    // console.log(
-    //   e.target.parentNode.parentNode.parentNode.parentNode.dataset.key
-    // );
+    let filteredValue = newObj.filter((f) => f.id === taskId);
+    let myOBJpriorityValue = filteredValue[0].priorityValue;
+    myOBJpriorityValue = priorityPickerValue;
+
+    let newFilteredValue = {
+      ...filteredValue[0],
+      priorityValue: myOBJpriorityValue,
+    };
+    console.log(newFilteredValue);
   }
   return (
     <>
