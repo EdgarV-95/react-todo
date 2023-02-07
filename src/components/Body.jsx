@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Body.css';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import FlagIcon from '@mui/icons-material/Flag';
@@ -7,6 +7,16 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 
 function PriorityPicker() {
+  function updateArray(obj, updatedValues) {
+    obj = obj.map((item) => {
+      if (item.id === updatedValues.id) {
+        return { ...item, ...updatedValues };
+      }
+      return item;
+    });
+    return obj;
+  }
+
   function handlePrioritySelection(e) {
     // // Get priority picker value
     let priorityPickerValue = e.target.innerHTML.toLowerCase();
@@ -26,8 +36,15 @@ function PriorityPicker() {
       ...filteredValue[0],
       priorityValue: myOBJpriorityValue,
     };
-    console.log(newFilteredValue);
+
+    const updatedObject = updateArray(newObj, newFilteredValue);
+    window.localStorage.setItem(
+      'tasks',
+      JSON.stringify(updatedObject)
+    );
+    location.reload();
   }
+
   return (
     <>
       <ul className="select-priority">
@@ -78,7 +95,14 @@ export default function Body() {
                   <div className="task-title">{task.titleValue}</div>
                 </div>
                 <div className="task-right">
-                  <EditOutlinedIcon className="task-edit" />
+                  <EditOutlinedIcon
+                    className="task-edit"
+                    onClick={() =>
+                      console.log(
+                        JSON.parse(localStorage.getItem('tasks'))
+                      )
+                    }
+                  />
                   <div
                     className={
                       click === task.id ? 'info clicked' : 'info'
@@ -100,6 +124,7 @@ export default function Body() {
                     onClick={() => handleDelete(task.id)}
                   />
                 </div>
+                {task.priorityValue}
               </li>
             );
           })}
