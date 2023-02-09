@@ -21,6 +21,7 @@ export default function AddTaskModal({ closeModal }) {
   const [titleValue, setTitleValuel] = useState('');
   const [descriptionValue, setDescriptionValuel] = useState('');
   const [priorityValue, setPriorityValue] = useState('');
+  const [flagColor, setFlagColor] = useState('');
   const [projectValue, setProjectValue] = useState('');
 
   const [tasks, setTasks] = useState([]);
@@ -37,6 +38,12 @@ export default function AddTaskModal({ closeModal }) {
       return;
     }
   }, [tasks]);
+
+  function updateColor(priority) {
+    if (priority === 'low') setFlagColor('blue');
+    if (priority === 'medium') setFlagColor('orange');
+    if (priority === 'high') setFlagColor('red');
+  }
 
   return (
     <div className="modal-background">
@@ -89,9 +96,9 @@ export default function AddTaskModal({ closeModal }) {
                   value={priorityValue}
                   onChange={(e) => setPriorityValue(e.target.value)}
                 >
-                  <MenuItem value={'Low'}>Low</MenuItem>
-                  <MenuItem value={'Medium'}>Medium</MenuItem>
-                  <MenuItem value={'High'}>High</MenuItem>
+                  <MenuItem value={'low'}>Low</MenuItem>
+                  <MenuItem value={'medium'}>Medium</MenuItem>
+                  <MenuItem value={'high'}>High</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -117,6 +124,7 @@ export default function AddTaskModal({ closeModal }) {
           <button onClick={closeModal}>Close</button>
           <button
             onClick={() => {
+              updateColor(priorityValue);
               tasks.push({
                 id: uuidv4(),
                 titleValue,
