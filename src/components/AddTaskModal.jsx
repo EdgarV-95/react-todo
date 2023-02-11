@@ -21,7 +21,6 @@ export default function AddTaskModal({ closeModal }) {
   const [titleValue, setTitleValuel] = useState('');
   const [descriptionValue, setDescriptionValuel] = useState('');
   const [priorityValue, setPriorityValue] = useState('');
-  const [flagColor, setFlagColor] = useState('');
   const [projectValue, setProjectValue] = useState('');
 
   const [tasks, setTasks] = useState([]);
@@ -39,6 +38,7 @@ export default function AddTaskModal({ closeModal }) {
     }
   }, [tasks]);
 
+  const [flagColor, setFlagColor] = useState('');
   function updateColor(priority) {
     if (priority === 'low') setFlagColor('blue');
     if (priority === 'medium') setFlagColor('orange');
@@ -132,6 +132,7 @@ export default function AddTaskModal({ closeModal }) {
                 dateValue,
                 priorityValue,
                 projectValue,
+                flagColor,
               });
               localStorage.setItem('tasks', JSON.stringify(tasks));
               closeModal();
