@@ -8,6 +8,7 @@ import {
   MenuItem,
   FormControl,
   Select,
+  fabClasses,
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -38,11 +39,11 @@ export default function AddTaskModal({ closeModal }) {
     }
   }, [tasks]);
 
-  const [flagColor, setFlagColor] = useState('');
+  let flagColor;
   function updateColor(priority) {
-    if (priority === 'low') setFlagColor('blue');
-    if (priority === 'medium') setFlagColor('orange');
-    if (priority === 'high') setFlagColor('red');
+    if (priority === 'low') flagColor = 'blue';
+    if (priority === 'medium') flagColor = 'orange';
+    if (priority === 'high') flagColor = 'red';
   }
 
   return (
@@ -132,7 +133,7 @@ export default function AddTaskModal({ closeModal }) {
                 dateValue,
                 priorityValue,
                 projectValue,
-                flagColor,
+                flagColor: flagColor,
               });
               localStorage.setItem('tasks', JSON.stringify(tasks));
               closeModal();

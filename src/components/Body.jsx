@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Body.css';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import EditTask from './options/EditTask';
@@ -11,12 +11,52 @@ export default function Body() {
     JSON.parse(localStorage.getItem('tasks') || '[]')
   );
 
+  // Handle PRIORITY
+  function handlePrioritySelection(e, idValue) {
+    // // Get priority picker value
+    let priorityPickerValue = e.target.innerHTML.toLowerCase();
+    // // Get the id of the task the priority picker was used on
+    // // Get the obj in localStorage the ID corresponds too
+    let filteredValue = tasks.filter((f) => f.id === idValue);
+
+    let newFilteredValue = {
+      ...filteredValue[0],
+      priorityValue: priorityPickerValue,
+      flagColor: updateColor(priorityPickerValue),
+    };
+
+    const updatedObject = updateArray(tasks, newFilteredValue);
+    window.localStorage.setItem(
+      'tasks',
+      JSON.stringify(updatedObject)
+    );
+    setTasks(updatedObject);
+  }
+
+  function updateArray(obj, updatedValues) {
+    obj = obj.map((item) => {
+      if (item.id === updatedValues.id) {
+        return { ...item, ...updatedValues };
+      }
+      return item;
+    });
+    return obj;
+  }
+
+  function updateColor(priority) {
+    if (priority === 'low') return 'blue';
+    if (priority === 'medium') return 'orange';
+    if (priority === 'high') return 'red';
+  }
+
   // Handle DELETE
   function handleDelete(idValue) {
-    let newTasks = tasks.filter((t) => t.id !== idValue);
-    localStorage.setItem('tasks', JSON.stringify(newTasks));
-    setTasks(newTasks);
+    let remainingTasks = tasks.filter((task) => task.id !== idValue);
+    localStorage.setItem('tasks', JSON.stringify(remainingTasks));
+    setTasks(remainingTasks);
   }
+
+  // Handle EDIT
 
   return (
     <div className="main-body">
@@ -32,7 +72,12 @@ export default function Body() {
                 </div>
                 <div className="task-right">
                   <EditTask />
-                  <PriorityPicker />
+                  <PriorityPicker
+                    onPrioritySelection={(e) =>
+                      handlePrioritySelection(e, task.id)
+                    }
+                    flagColor={task.flagColor}
+                  />
                   <MoveProject />
                   <DeleteTask
                     handleDelete={() => handleDelete(task.id)}
