@@ -22,11 +22,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2vh;
 }
 
 .task-left {
   display: flex;
   gap: 2.5vw;
+}
+
+.task-middle {
+  width: 40vw;
+  padding-left: 5vw;
+  cursor: pointer;
 }
 
 .task-right {
@@ -68,4 +75,39 @@ ul div.info {
 .select-priority > li:hover {
   border: 1px solid red;
   border-radius: 1vh;
+}
+
+.details-tab {
+  margin-top: 1vh;
+  border: 1px solid rgb(226, 230, 233);
+  border-radius: 1.5vh;
+  width: 50vw;
+  padding-bottom: 1vh;
+  font-size: medium;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  font-size: 1.5vh;
+}
+
+span {
+  font-weight: bold;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+}
+
+.description > p {
+  padding-left: 0.1vw;
+}
+
+textarea {
+  border-style: none;
+  resize: none;
+  overflow: hidden;
 }

@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Body.css';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
+import TaskDesc from './options/TaskDesc';
 import EditTask from './options/EditTask';
 import PriorityPicker from './options/PriorityPicker';
 import MoveProject from './options/MoveProject';
@@ -56,7 +57,11 @@ export default function Body() {
     setTasks(remainingTasks);
   }
 
-  // Handle EDIT
+  // Handle DETAILS
+  const [taskIndex, setTaskIndex] = useState(null);
+  function toggleTask(index) {
+    setTaskIndex(index === taskIndex ? null : index);
+  }
 
   return (
     <div className="main-body">
@@ -65,25 +70,44 @@ export default function Body() {
         <ul className="tasks-list">
           {tasks.map((task) => {
             return (
-              <li key={task.id} data-key={task.id} className="task">
-                <div className="task-left">
-                  <CheckCircleOutlineOutlinedIcon className="task-done" />
-                  <div className="task-title">{task.titleValue}</div>
+              <div className="task-test" key={task.id}>
+                <li data-key={task.id} className="task">
+                  <div className="task-left">
+                    <CheckCircleOutlineOutlinedIcon className="task-done" />
+                  </div>
+                  <div
+                    className="task-middle"
+                    onClick={() => {
+                      toggleTask(task.id);
+                    }}
+                  >
+                    {task.titleValue}
+                  </div>
+                  <div className="task-right">
+                    <EditTask />
+                    <PriorityPicker
+                      onPrioritySelection={(e) =>
+                        handlePrioritySelection(e, task.id)
+                      }
+                      flagColor={task.flagColor}
+                    />
+                    <MoveProject />
+                    <DeleteTask
+                      handleDelete={() => handleDelete(task.id)}
+                    />
+                  </div>
+                </li>
+                <div className="test">
+                  {taskIndex === task.id && (
+                    <TaskDesc
+                      title={task.titleValue}
+                      description={task.descriptionValue}
+                      date={task.dateValue}
+                      priority={task.priorityValue}
+                    />
+                  )}
                 </div>
-                <div className="task-right">
-                  <EditTask />
-                  <PriorityPicker
-                    onPrioritySelection={(e) =>
-                      handlePrioritySelection(e, task.id)
-                    }
-                    flagColor={task.flagColor}
-                  />
-                  <MoveProject />
-                  <DeleteTask
-                    handleDelete={() => handleDelete(task.id)}
-                  />
-                </div>
-              </li>
+              </div>
             );
           })}
         </ul>
