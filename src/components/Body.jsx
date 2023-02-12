@@ -12,19 +12,6 @@ export default function Body() {
     JSON.parse(localStorage.getItem('tasks') || '[]')
   );
 
-  // Handle DELETE
-  function handleDelete(idValue) {
-    let remainingTasks = tasks.filter((task) => task.id !== idValue);
-    localStorage.setItem('tasks', JSON.stringify(remainingTasks));
-    setTasks(remainingTasks);
-  }
-
-  // Handle DETAILS
-  const [taskIndex, setTaskIndex] = useState(null);
-  function toggleTask(index) {
-    setTaskIndex(index === taskIndex ? null : index);
-  }
-
   // HELPERS
   function updateArray(obj, updatedValues) {
     obj = obj.map((item) => {
@@ -42,26 +29,10 @@ export default function Body() {
     if (priority === 'high') return 'red';
   }
 
-  // Handle PRIORITY
-  function handlePrioritySelection(e, idValue) {
-    // // Get priority picker value
-    let priorityPickerValue = e.target.innerHTML.toLowerCase();
-    // // Get the id of the task the priority picker was used on
-    // // Get the obj in localStorage the ID corresponds too
-    let filteredValue = tasks.filter((f) => f.id === idValue);
-
-    let newFilteredValue = {
-      ...filteredValue[0],
-      priorityValue: priorityPickerValue,
-      flagColor: updateColor(priorityPickerValue),
-    };
-
-    const updatedObject = updateArray(tasks, newFilteredValue);
-    window.localStorage.setItem(
-      'tasks',
-      JSON.stringify(updatedObject)
-    );
-    setTasks(updatedObject);
+  // Handle DETAILS
+  const [taskIndex, setTaskIndex] = useState(null);
+  function toggleTask(index) {
+    setTaskIndex(index === taskIndex ? null : index);
   }
 
   // Handle EDIT
@@ -90,6 +61,37 @@ export default function Body() {
       JSON.stringify(updatedObject)
     );
     setTasks(updatedObject);
+    location.reload();
+  }
+
+  // Handle PRIORITY
+  function handlePrioritySelection(e, idValue) {
+    // // Get priority picker value
+    let priorityPickerValue = e.target.innerHTML.toLowerCase();
+    // // Get the id of the task the priority picker was used on
+    // // Get the obj in localStorage the ID corresponds too
+    let filteredValue = tasks.filter((f) => f.id === idValue);
+
+    let newFilteredValue = {
+      ...filteredValue[0],
+      priorityValue: priorityPickerValue,
+      flagColor: updateColor(priorityPickerValue),
+    };
+
+    const updatedObject = updateArray(tasks, newFilteredValue);
+    window.localStorage.setItem(
+      'tasks',
+      JSON.stringify(updatedObject)
+    );
+    setTasks(updatedObject);
+    location.reload();
+  }
+
+  // Handle DELETE
+  function handleDelete(idValue) {
+    let remainingTasks = tasks.filter((task) => task.id !== idValue);
+    localStorage.setItem('tasks', JSON.stringify(remainingTasks));
+    setTasks(remainingTasks);
   }
 
   return (

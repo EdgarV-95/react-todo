@@ -16,6 +16,15 @@ export default function EditTask({ onEditTask, currentValues }) {
     setOpenEditForm(!openEditForm);
   }
 
+  function closeEditFormBtn() {
+    setOpenEditForm(false);
+    setTitle(currentValues[1]);
+    setDescription(currentValues[2]);
+    setDate(currentValues[3]);
+    setPriority(currentValues[4]);
+    setProject(currentValues[5]);
+  }
+
   const [title, setTitle] = useState(currentValues[1]);
   const [description, setDescription] = useState(currentValues[2]);
   const [date, setDate] = useState(currentValues[3]);
@@ -32,7 +41,7 @@ export default function EditTask({ onEditTask, currentValues }) {
           <div className="modal-body">
             <div className="modal-header">
               <h3>Edit Task</h3>
-              <button onClick={openEditFormBtn}>X</button>
+              <button onClick={closeEditFormBtn}>X</button>
             </div>
             <div className="form-body">
               <ul>
@@ -103,7 +112,7 @@ export default function EditTask({ onEditTask, currentValues }) {
               </ul>
             </div>
             <div className="buttons">
-              <button onClick={openEditFormBtn}>Close</button>
+              <button onClick={closeEditFormBtn}>Close</button>
               <button
                 onClick={() => {
                   onEditTask(
