@@ -12,6 +12,36 @@ export default function Body() {
     JSON.parse(localStorage.getItem('tasks') || '[]')
   );
 
+  // Handle DELETE
+  function handleDelete(idValue) {
+    let remainingTasks = tasks.filter((task) => task.id !== idValue);
+    localStorage.setItem('tasks', JSON.stringify(remainingTasks));
+    setTasks(remainingTasks);
+  }
+
+  // Handle DETAILS
+  const [taskIndex, setTaskIndex] = useState(null);
+  function toggleTask(index) {
+    setTaskIndex(index === taskIndex ? null : index);
+  }
+
+  // HELPERS
+  function updateArray(obj, updatedValues) {
+    obj = obj.map((item) => {
+      if (item.id === updatedValues.id) {
+        return { ...item, ...updatedValues };
+      }
+      return item;
+    });
+    return obj;
+  }
+
+  function updateColor(priority) {
+    if (priority === 'low') return 'blue';
+    if (priority === 'medium') return 'orange';
+    if (priority === 'high') return 'red';
+  }
+
   // Handle PRIORITY
   function handlePrioritySelection(e, idValue) {
     // // Get priority picker value
@@ -34,33 +64,32 @@ export default function Body() {
     setTasks(updatedObject);
   }
 
-  function updateArray(obj, updatedValues) {
-    obj = obj.map((item) => {
-      if (item.id === updatedValues.id) {
-        return { ...item, ...updatedValues };
-      }
-      return item;
-    });
-    return obj;
-  }
+  // Handle EDIT
+  function handleEdit(
+    idValue,
+    title,
+    description,
+    date,
+    priority,
+    project
+  ) {
+    let filteredValue = tasks.filter((f) => f.id === idValue);
+    let newFilteredValue = {
+      ...filteredValue[0],
+      titleValue: title,
+      descriptionValue: description,
+      dateValue: date,
+      priorityValue: priority,
+      projectValue: project,
+      flagColor: updateColor(priority),
+    };
 
-  function updateColor(priority) {
-    if (priority === 'low') return 'blue';
-    if (priority === 'medium') return 'orange';
-    if (priority === 'high') return 'red';
-  }
-
-  // Handle DELETE
-  function handleDelete(idValue) {
-    let remainingTasks = tasks.filter((task) => task.id !== idValue);
-    localStorage.setItem('tasks', JSON.stringify(remainingTasks));
-    setTasks(remainingTasks);
-  }
-
-  // Handle DETAILS
-  const [taskIndex, setTaskIndex] = useState(null);
-  function toggleTask(index) {
-    setTaskIndex(index === taskIndex ? null : index);
+    const updatedObject = updateArray(tasks, newFilteredValue);
+    window.localStorage.setItem(
+      'tasks',
+      JSON.stringify(updatedObject)
+    );
+    setTasks(updatedObject);
   }
 
   return (
@@ -84,7 +113,18 @@ export default function Body() {
                     {task.titleValue}
                   </div>
                   <div className="task-right">
-                    <EditTask />
+                    <EditTask
+                      onEditTask={handleEdit}
+                      currentValues={[
+                        task.id,
+                        task.titleValue,
+                        task.descriptionValue,
+                        task.dateValue,
+                        task.priorityValue,
+                        task.projectValue,
+                        task.flagColor,
+                      ]}
+                    />
                     <PriorityPicker
                       onPrioritySelection={(e) =>
                         handlePrioritySelection(e, task.id)

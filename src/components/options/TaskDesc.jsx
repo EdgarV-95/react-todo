@@ -26,13 +26,12 @@ export default function TaskDesc({
           <span>Description:</span>
         </p>
         <textarea
-          cols="30"
+          cols="50"
           rows="5"
-          maxlength="50"
-          readonly="readonly"
-        >
-          {description}
-        </textarea>
+          maxLength="50"
+          readOnly="readonly"
+          value={description}
+        />
       </div>
     </div>
   );

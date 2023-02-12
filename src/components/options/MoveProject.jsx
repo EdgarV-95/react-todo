@@ -4,7 +4,9 @@ export default function MoveProject() {
   return (
     <div className="task-project">
       <ArrowCircleRightOutlinedIcon
-        onClick={() => console.log('Moving to project')}
+        onClick={() =>
+          console.log(JSON.parse(localStorage.getItem('tasks')))
+        }
       />
     </div>
   );
