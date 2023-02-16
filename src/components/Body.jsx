@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './Body.css';
-import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
+import Checkbox from '@mui/material/Checkbox';
 import TaskDesc from './options/TaskDesc';
 import EditTask from './options/EditTask';
 import PriorityPicker from './options/PriorityPicker';
@@ -94,6 +94,30 @@ export default function Body() {
     setTasks(remainingTasks);
   }
 
+  const [completedTasks, setCompletedTasks] = useState([]);
+  function handleComplete(idValue) {
+    let doneTask = tasks.filter((task) => task.id === idValue);
+    completedTasks.push(doneTask);
+    localStorage.setItem('done', JSON.stringify(completedTasks));
+    handleDelete(idValue);
+  }
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('done');
+    if (data !== null) setCompletedTasks(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    if (completedTasks.length > 1) {
+      window.localStorage.setItem(
+        'done',
+        JSON.stringify(completedTasks)
+      );
+    } else {
+      return;
+    }
+  }, [completedTasks]);
+
   return (
     <div className="main-body">
       <h2 className="title-txt">Today</h2>
@@ -104,7 +128,13 @@ export default function Body() {
               <div className="task-test" key={task.id}>
                 <li data-key={task.id} className="task">
                   <div className="task-left">
-                    <CheckCircleOutlineOutlinedIcon className="task-done" />
+                    <Checkbox
+                      size="small"
+                      onClick={() => {
+                        handleComplete(task.id);
+                        console.log(completedTasks);
+                      }}
+                    />
                   </div>
                   <div
                     className="task-middle"
@@ -139,7 +169,7 @@ export default function Body() {
                     />
                   </div>
                 </li>
-                <div className="test">
+                <div className="task-description">
                   {taskIndex === task.id && (
                     <TaskDesc
                       title={task.titleValue}
