@@ -8,21 +8,15 @@ import CompletedTasks from './components/CompletedTasks';
 function App() {
   // Use state to track the sidebar
   const [showSidebar, setShowSidebar] = useState(true);
-
-  let component;
-  switch (window.location.pathname) {
-    case '/':
-      component = <Body />;
-      break;
-    case '/home':
-      component = <Body />;
-      break;
-    case '/completed':
-      component = <CompletedTasks />;
-      break;
-    default:
-      component = <Body />;
-      break;
+  const [showBody, setShowBody] = useState(true);
+  function toggleBody() {
+    setShowBody(true);
+    setShowCompleted(false);
+  }
+  const [showCompleted, setShowCompleted] = useState(false);
+  function toggleCompleted() {
+    setShowBody(false);
+    setShowCompleted(true);
   }
 
   return (
@@ -30,10 +24,13 @@ function App() {
       <Header
         showSidebar={showSidebar}
         onSidebarToggle={() => setShowSidebar(!showSidebar)}
+        onToggleBody={toggleBody}
+        onToggleCompleted={toggleCompleted}
       />
       <div className="main-section">
         {showSidebar && <Sidebar />}
-        {component}
+        {showBody && <Body />}
+        {showCompleted && <CompletedTasks />}
       </div>
     </div>
   );

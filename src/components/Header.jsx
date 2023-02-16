@@ -6,7 +6,12 @@ import AddIcon from '@mui/icons-material/Add';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import AddTaskModal from './AddTaskModal';
 
-export default function Header({ showSidebar, onSidebarToggle }) {
+export default function Header({
+  showSidebar,
+  onSidebarToggle,
+  onToggleBody,
+  onToggleCompleted,
+}) {
   const [addTaskModal, setAddTaskModal] = useState(false);
 
   return (
@@ -15,7 +20,7 @@ export default function Header({ showSidebar, onSidebarToggle }) {
         <div onClick={() => onSidebarToggle(showSidebar)}>
           <MenuIcon sx={{ fontSize: 30 }} />
         </div>
-        <div onClick={() => (window.location.pathname = '/home')}>
+        <div onClick={() => onToggleBody()}>
           <HomeOutlinedIcon sx={{ fontSize: 30 }} />
         </div>
       </div>
@@ -26,9 +31,7 @@ export default function Header({ showSidebar, onSidebarToggle }) {
         {addTaskModal && (
           <AddTaskModal closeModal={() => setAddTaskModal(false)} />
         )}
-        <div
-          onClick={() => (window.location.pathname = '/completed')}
-        >
+        <div onClick={() => onToggleCompleted()}>
           <DoneOutlinedIcon sx={{ fontSize: 30 }} />
         </div>
       </div>
