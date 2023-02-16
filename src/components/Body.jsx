@@ -120,6 +120,7 @@ export default function Body() {
 
   return (
     <div className="main-body">
+      <a href="/" className="site-title"></a>
       <h2 className="title-txt">Today</h2>
       {tasks && (
         <ul className="tasks-list">

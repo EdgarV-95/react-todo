@@ -15,7 +15,7 @@ export default function Header({ showSidebar, onSidebarToggle }) {
         <div onClick={() => onSidebarToggle(showSidebar)}>
           <MenuIcon sx={{ fontSize: 30 }} />
         </div>
-        <div onClick={() => console.log('Takes you back home')}>
+        <div onClick={() => (window.location.pathname = '/home')}>
           <HomeOutlinedIcon sx={{ fontSize: 30 }} />
         </div>
       </div>
@@ -26,7 +26,9 @@ export default function Header({ showSidebar, onSidebarToggle }) {
         {addTaskModal && (
           <AddTaskModal closeModal={() => setAddTaskModal(false)} />
         )}
-        <div onClick={() => console.log('Shows list of done tasks')}>
+        <div
+          onClick={() => (window.location.pathname = '/completed')}
+        >
           <DoneOutlinedIcon sx={{ fontSize: 30 }} />
         </div>
       </div>
