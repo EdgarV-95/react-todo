@@ -35,6 +35,12 @@ export default function EditTask({ onEditTask, currentValues }) {
       <EditOutlinedIcon
         className="task-edit"
         onClick={openEditFormBtn}
+        sx={{
+          '&:hover': {
+            backgroundColor: 'rgb(238,238,238);',
+            borderRadius: '0.5vh',
+          },
+        }}
       />
       {openEditForm && (
         <div className="modal-background">

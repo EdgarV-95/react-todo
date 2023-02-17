@@ -84,7 +84,16 @@ export default function PriorityPicker({
           closeDropdown={closeDropdownBtn}
         />
       )}
-      <FlagIcon onClick={openDropdownBtn} sx={{ color: colorFlag }} />
+      <FlagIcon
+        onClick={openDropdownBtn}
+        sx={{
+          color: colorFlag,
+          '&:hover': {
+            backgroundColor: 'rgb(238,238,238);',
+            borderRadius: '0.5vh',
+          },
+        }}
+      />
     </div>
   );
 }

@@ -79,7 +79,7 @@ ul div.info {
 
 .details-tab {
   margin-top: 1vh;
-  border: 1px solid rgb(226, 230, 233);
+  /* border: 1px solid rgb(226, 230, 233); */
   border-radius: 1.5vh;
   width: 50vw;
   padding-bottom: 1vh;
@@ -88,6 +88,13 @@ ul div.info {
   justify-content: space-evenly;
   align-items: start;
   font-size: 1.5vh;
+}
+
+.completed-container {
+  border: 1px solid rgb(226, 230, 233);
+  border-radius: 1.5vh;
+  width: 55vw;
+  padding-bottom: 1vh;
 }
 
 span {

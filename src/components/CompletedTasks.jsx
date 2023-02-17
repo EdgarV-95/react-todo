@@ -18,29 +18,31 @@ export default function CompletedTasks() {
   }
 
   return (
-    <div className="completed-tasks">
-      <h2 className="title-txt">Completed tasks</h2>
-      {completedList && (
-        <ul className="tasks-list">
-          {completedList.map((task) => {
-            return (
-              <div className="completed-container">
-                <div className="task-test" key={task[0].id}>
-                  <TaskDesc
-                    title={task[0].titleValue}
-                    description={task[0].descriptionValue}
-                    date={task[0].dateValue}
-                    priority={task[0].priorityValue}
+    <div className="main-body">
+      <div className="completed-tasks">
+        <h2 className="title-txt">Completed tasks</h2>
+        {completedList && (
+          <ul className="tasks-list">
+            {completedList.map((task) => {
+              return (
+                <div className="completed-container">
+                  <div className="task-test" key={task[0].id}>
+                    <TaskDesc
+                      title={task[0].titleValue}
+                      description={task[0].descriptionValue}
+                      date={task[0].dateValue}
+                      priority={task[0].priorityValue}
+                    />
+                  </div>
+                  <DeleteTask
+                    handleDelete={() => handleDelete(task[0].id)}
                   />
                 </div>
-                <DeleteTask
-                  handleDelete={() => handleDelete(task[0].id)}
-                />
-              </div>
-            );
-          })}
-        </ul>
-      )}
+              );
+            })}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

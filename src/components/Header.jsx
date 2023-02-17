@@ -18,21 +18,61 @@ export default function Header({
     <div className="top-navbar">
       <div className="nav-left">
         <div onClick={() => onSidebarToggle(showSidebar)}>
-          <MenuIcon sx={{ fontSize: 30 }} />
+          <MenuIcon
+            sx={{
+              fontSize: 30,
+              '&:hover': {
+                backgroundColor: 'rgb(236, 144, 144);',
+                borderRadius: '0.5vh',
+              },
+            }}
+          />
         </div>
         <div onClick={() => onToggleBody()}>
-          <HomeOutlinedIcon sx={{ fontSize: 30 }} />
+          <HomeOutlinedIcon
+            sx={{
+              fontSize: 30,
+              '&:hover': {
+                backgroundColor: 'rgb(236, 144, 144);',
+                borderRadius: '0.5vh',
+              },
+            }}
+          />
         </div>
       </div>
       <div className="nav-right">
         <div onClick={() => setAddTaskModal(true)}>
-          <AddIcon sx={{ fontSize: 30 }} />
+          <AddIcon
+            sx={{
+              fontSize: 30,
+              '&:hover': {
+                backgroundColor: 'rgb(236, 144, 144);',
+                borderRadius: '0.5vh',
+              },
+            }}
+          />
         </div>
         {addTaskModal && (
-          <AddTaskModal closeModal={() => setAddTaskModal(false)} />
+          <AddTaskModal
+            closeModal={() => setAddTaskModal(false)}
+            sx={{
+              '&:hover': {
+                backgroundColor: 'rgb(236, 144, 144);',
+                borderRadius: '0.5vh',
+              },
+            }}
+          />
         )}
         <div onClick={() => onToggleCompleted()}>
-          <DoneOutlinedIcon sx={{ fontSize: 30 }} />
+          <DoneOutlinedIcon
+            sx={{
+              fontSize: 30,
+              '&:hover': {
+                backgroundColor: 'rgb(236, 144, 144);',
+                borderRadius: '0.5vh',
+              },
+            }}
+          />
         </div>
       </div>
     </div>

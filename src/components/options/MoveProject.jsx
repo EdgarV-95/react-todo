@@ -7,6 +7,12 @@ export default function MoveProject() {
         onClick={() =>
           console.log(JSON.parse(localStorage.getItem('tasks')))
         }
+        sx={{
+          '&:hover': {
+            backgroundColor: 'rgb(238,238,238);',
+            borderRadius: '0.5vh',
+          },
+        }}
       />
     </div>
   );
