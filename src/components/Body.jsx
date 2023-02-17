@@ -133,7 +133,6 @@ export default function Body() {
                       size="small"
                       onClick={() => {
                         handleComplete(task.id);
-                        console.log(completedTasks);
                       }}
                     />
                   </div>
