@@ -19,7 +19,7 @@ export default function CompletedTasks() {
 
   return (
     <div className="completed-tasks">
-      <a href="/completed" className="site-title"></a>
+      <h2 className="title-txt">Completed tasks</h2>
       {completedList && (
         <ul className="tasks-list">
           {completedList.map((task) => {
