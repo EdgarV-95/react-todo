@@ -46,7 +46,7 @@ export default function EditTask({ onEditTask, currentValues }) {
         <div className="modal-background">
           <div className="modal-body">
             <div className="modal-header">
-              <h3>Edit Task</h3>
+              <h3>Update Task</h3>
               <button onClick={closeEditFormBtn}>X</button>
             </div>
             <div className="form-body">
@@ -133,7 +133,7 @@ export default function EditTask({ onEditTask, currentValues }) {
                   openEditFormBtn();
                 }}
               >
-                Submit
+                Update
               </button>
             </div>
           </div>

@@ -25,8 +25,8 @@ export default function CompletedTasks() {
           <ul className="tasks-list">
             {completedList.map((task) => {
               return (
-                <div className="completed-container">
-                  <div className="task-test" key={task[0].id}>
+                <div className="completed-container" key={task[0].id}>
+                  <div className="task-test">
                     <TaskDesc
                       title={task[0].titleValue}
                       description={task[0].descriptionValue}

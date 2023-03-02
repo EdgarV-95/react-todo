@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Body from './components/Body';
 import CompletedTasks from './components/CompletedTasks';
+import Today from './components/sidebar/Today';
+import ThisWeek from './components/sidebar/ThisWeek';
 
 function App() {
   // Use state to track the sidebar
@@ -12,11 +14,29 @@ function App() {
   function toggleBody() {
     setShowBody(true);
     setShowCompleted(false);
+    setShowToday(false);
+    setShowWeek(false);
   }
   const [showCompleted, setShowCompleted] = useState(false);
   function toggleCompleted() {
     setShowBody(false);
     setShowCompleted(true);
+    setShowToday(false);
+    setShowWeek(false);
+  }
+  const [showToday, setShowToday] = useState(false);
+  function toggleToday() {
+    setShowBody(false);
+    setShowCompleted(false);
+    setShowToday(true);
+    setShowWeek(false);
+  }
+  const [showWeek, setShowWeek] = useState(false);
+  function toggleWeek() {
+    setShowBody(false);
+    setShowCompleted(false);
+    setShowToday(false);
+    setShowWeek(true);
   }
 
   return (
@@ -28,9 +48,18 @@ function App() {
         onToggleCompleted={toggleCompleted}
       />
       <div className="main-section">
-        {showSidebar && <Sidebar />}
+        {showSidebar && (
+          <Sidebar
+            onToggleBody={toggleBody}
+            onToggleToday={toggleToday}
+            onToggleThisWeek={toggleWeek}
+          />
+        )}
         {showBody && <Body />}
         {showCompleted && <CompletedTasks />}
+
+        {showToday && <Today />}
+        {showWeek && <ThisWeek />}
       </div>
     </div>
   );

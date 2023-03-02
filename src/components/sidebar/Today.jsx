@@ -1,18 +1,26 @@
 import { useState, useEffect } from 'react';
-import './Body.css';
+import './Inbox.css';
 import Checkbox from '@mui/material/Checkbox';
-import TaskDesc from './options/TaskDesc';
-import EditTask from './options/EditTask';
-import PriorityPicker from './options/PriorityPicker';
-import MoveProject from './options/MoveProject';
-import DeleteTask from './options/DeleteTask';
+import TaskDesc from '../options/TaskDesc';
+import EditTask from '../options/EditTask';
+import PriorityPicker from '../options/PriorityPicker';
+import MoveProject from '../options/MoveProject';
+import DeleteTask from '../options/DeleteTask';
 
-export default function Body() {
+export default function Inbox() {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem('tasks') || '[]')
   );
 
-  let InboxTasks = tasks.filter((f) => f.projectValue === 'Inbox');
+  let tasksToday = tasks.filter(
+    (f) =>
+      f.dateValue ===
+      new Date()
+        .toLocaleDateString('en-GB')
+        .split('/')
+        .reverse()
+        .join('-')
+  );
 
   // HELPERS
   function updateArray(obj, updatedValues) {
@@ -46,7 +54,7 @@ export default function Body() {
     priority,
     project
   ) {
-    let filteredValue = InboxTasks.filter((f) => f.id === idValue);
+    let filteredValue = tasksToday.filter((f) => f.id === idValue);
     let newFilteredValue = {
       ...filteredValue[0],
       titleValue: title,
@@ -57,7 +65,7 @@ export default function Body() {
       flagColor: updateColor(priority),
     };
 
-    const updatedObject = updateArray(InboxTasks, newFilteredValue);
+    const updatedObject = updateArray(tasksToday, newFilteredValue);
     window.localStorage.setItem(
       'tasks',
       JSON.stringify(updatedObject)
@@ -72,7 +80,7 @@ export default function Body() {
     let priorityPickerValue = e.target.innerHTML.toLowerCase();
     // // Get the id of the task the priority picker was used on
     // // Get the obj in localStorage the ID corresponds too
-    let filteredValue = InboxTasks.filter((f) => f.id === idValue);
+    let filteredValue = tasksToday.filter((f) => f.id === idValue);
 
     let newFilteredValue = {
       ...filteredValue[0],
@@ -80,7 +88,7 @@ export default function Body() {
       flagColor: updateColor(priorityPickerValue),
     };
 
-    const updatedObject = updateArray(InboxTasks, newFilteredValue);
+    const updatedObject = updateArray(tasksToday, newFilteredValue);
     window.localStorage.setItem(
       'tasks',
       JSON.stringify(updatedObject)
@@ -91,7 +99,7 @@ export default function Body() {
 
   // Handle DELETE
   function handleDelete(idValue) {
-    let remainingTasks = InboxTasks.filter(
+    let remainingTasks = tasksToday.filter(
       (task) => task.id !== idValue
     );
     localStorage.setItem('tasks', JSON.stringify(remainingTasks));
@@ -100,7 +108,7 @@ export default function Body() {
 
   const [completedTasks, setCompletedTasks] = useState([]);
   function handleComplete(idValue) {
-    let doneTask = InboxTasks.filter((task) => task.id === idValue);
+    let doneTask = tasksToday.filter((task) => task.id === idValue);
     completedTasks.push(doneTask);
     localStorage.setItem('done', JSON.stringify(completedTasks));
     handleDelete(idValue);
@@ -124,10 +132,10 @@ export default function Body() {
 
   return (
     <div className="main-body">
-      <h2 className="title-txt">Inbox</h2>
-      {InboxTasks && (
+      <h2 className="title-txt">Today</h2>
+      {tasksToday && (
         <ul className="tasks-list">
-          {InboxTasks.map((task) => {
+          {tasksToday.map((task) => {
             return (
               <div className="task-test" key={task.id}>
                 <li data-key={task.id} className="task">

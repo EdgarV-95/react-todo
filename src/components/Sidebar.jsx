@@ -1,13 +1,17 @@
 import './Sidebar.css';
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
-import BorderAllIcon from '@mui/icons-material/BorderAll';
+import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
 
-export default function Sidebar() {
+export default function Sidebar({
+  onToggleBody,
+  onToggleToday,
+  onToggleThisWeek,
+}) {
   return (
     <div className="sidebar">
       <ul>
-        <li>
+        <li onClick={() => onToggleBody()}>
           <div className="icon">
             <span className="inbox-icon">
               <InboxOutlinedIcon />
@@ -15,7 +19,7 @@ export default function Sidebar() {
             <h4>Inbox</h4>
           </div>
         </li>
-        <li>
+        <li onClick={() => onToggleToday()}>
           <div className="icon">
             <span className="today-icon">
               <TodayOutlinedIcon />
@@ -23,13 +27,16 @@ export default function Sidebar() {
             <h4>Today</h4>
           </div>
         </li>
-        <li>
+        <li onClick={() => onToggleThisWeek()}>
           <div className="icon">
             <span className="projects-icon">
-              <BorderAllIcon />
+              <DateRangeOutlinedIcon />
             </span>
-            <h4>Projects</h4>
+            <h4>This Week</h4>
           </div>
+        </li>
+        <li>
+          <h3>Projects</h3>
         </li>
         <div className="new-project">+ Add Project</div>
       </ul>
