@@ -391,7 +391,6 @@ export default function Body({ showBody, showToday, showWeek }) {
       )}
       {showToday && (
         <Today
-          showToday={showToday}
           tasks={currentTask}
           handleComplete={handleComplete}
           taskIndex={taskIndex}
