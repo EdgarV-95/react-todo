@@ -9,6 +9,7 @@ import {
   FormControl,
   Select,
 } from '@mui/material';
+import { LineWeight } from '@mui/icons-material';
 
 export default function EditTask({ onEditTask, currentValues }) {
   const [openEditForm, setOpenEditForm] = useState(false);
@@ -36,6 +37,7 @@ export default function EditTask({ onEditTask, currentValues }) {
         className="task-edit"
         onClick={openEditFormBtn}
         sx={{
+          color: 'rgb(84, 84, 84);',
           '&:hover': {
             backgroundColor: 'rgb(238,238,238);',
             borderRadius: '0.5vh',

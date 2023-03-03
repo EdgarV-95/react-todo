@@ -33,10 +33,10 @@ export default function CompletedTasks() {
                       date={task[0].dateValue}
                       priority={task[0].priorityValue}
                     />
+                    <DeleteTask
+                      handleDelete={() => handleDelete(task[0].id)}
+                    />
                   </div>
-                  <DeleteTask
-                    handleDelete={() => handleDelete(task[0].id)}
-                  />
                 </div>
               );
             })}

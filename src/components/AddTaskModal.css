@@ -61,3 +61,8 @@
   gap: 0.5vw;
   justify-content: end;
 }
+
+.modal-header > h3,
+.buttons > button {
+  font-weight: 400;
+}

@@ -6,6 +6,7 @@ export default function DeleteTask({ handleDelete }) {
       <DeleteOutlineOutlinedIcon
         onClick={handleDelete}
         sx={{
+          color: 'rgb(84, 84, 84);',
           '&:hover': {
             backgroundColor: 'rgb(238,238,238);',
             borderRadius: '0.5vh',

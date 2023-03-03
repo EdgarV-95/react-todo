@@ -1,4 +1,9 @@
 .completed-container {
+  border: none;
+}
+
+.task-test {
+  border: none;
   display: flex;
   align-items: center;
 }

@@ -5,6 +5,7 @@
 
 .title-txt {
   font-size: 3vh;
+  font-weight: 300;
 }
 
 .tasks-list {
@@ -31,6 +32,7 @@
 }
 
 .task-middle {
+  font-weight: 300;
   width: 40vw;
   padding-left: 5vw;
   cursor: pointer;
@@ -78,8 +80,8 @@ ul div.info {
 }
 
 .details-tab {
+  border: 0.1px solid rgb(194, 188, 188);
   margin-top: 1vh;
-  /* border: 1px solid rgb(226, 230, 233); */
   border-radius: 1.5vh;
   width: 50vw;
   padding-bottom: 1vh;
@@ -98,14 +100,13 @@ ul div.info {
 }
 
 span {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .description {
   display: flex;
   flex-direction: column;
   align-content: center;
-  /* justify-content: center; */
   flex-wrap: wrap;
 }
 

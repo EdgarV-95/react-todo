@@ -32,10 +32,12 @@ ul {
 }
 
 .new-project {
+  font-weight: 350;
   padding-top: 2vh;
   padding-left: 1.5vw;
 }
 
 h4 {
   cursor: pointer;
+  font-weight: 350;
 }
