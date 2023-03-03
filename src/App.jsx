@@ -1,11 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Body from './components/Body';
 import CompletedTasks from './components/CompletedTasks';
-import Today from './components/sidebar/Today';
-import ThisWeek from './components/sidebar/ThisWeek';
 
 function App() {
   // Use state to track the sidebar
@@ -55,11 +53,12 @@ function App() {
             onToggleThisWeek={toggleWeek}
           />
         )}
-        {showBody && <Body />}
+        <Body
+          showBody={showBody}
+          showToday={showToday}
+          showWeek={showWeek}
+        />
         {showCompleted && <CompletedTasks />}
-
-        {showToday && <Today />}
-        {showWeek && <ThisWeek />}
       </div>
     </div>
   );
