@@ -63,6 +63,7 @@
 }
 
 .modal-header > h3,
-.buttons > button {
-  font-weight: 400;
+.buttons > button,
+.close-btn {
+  font-weight: 300;
 }

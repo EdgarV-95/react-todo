@@ -1,9 +1,11 @@
 .completed-container {
   border: none;
-}
-
-.task-test {
-  border: none;
   display: flex;
   align-items: center;
+}
+
+.another-test {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
 }

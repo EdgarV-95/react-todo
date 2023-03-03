@@ -262,7 +262,7 @@ export default function Body({ showBody, showToday, showWeek }) {
       (f) =>
         f.dateValue <=
         f.dateValue.slice(0, -2) +
-          (+f.dateValue[8] + +f.dateValue[9] + 7)
+          (+f.dateValue[8] + +f.dateValue[9] + 6)
     );
   } else {
     currentTask = tasks.filter((f) => f.projectValue === 'Inbox');

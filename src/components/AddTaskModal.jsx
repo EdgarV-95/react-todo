@@ -68,7 +68,9 @@ export default function AddTaskModal({ closeModal }) {
         <div className="modal-body">
           <div className="modal-header">
             <h3>New Task</h3>
-            <button onClick={closeModal}>X</button>
+            <button className="close-btn" onClick={closeModal}>
+              X
+            </button>
           </div>
           <div className="form-body">
             <ul>
