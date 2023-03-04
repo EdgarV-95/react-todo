@@ -13,7 +13,6 @@ ul {
 
 .icon {
   height: 5vh;
-  width: 10vw;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -21,10 +20,8 @@ ul {
 }
 
 .icon:hover {
-  width: 10vw;
-  background-color: rgb(238, 238, 238);
-  border-radius: 0.5vh;
-  padding-left: 1vw;
+  border-bottom: 1px solid rgb(150, 147, 147);
+  width: 70%;
 }
 
 .inbox-icon {
