@@ -1,6 +1,7 @@
 .sidebar {
   background-color: rgb(247, 247, 247);
-  width: 22.2vw;
+  min-width: 250px;
+  max-width: 350px;
   height: 95vh;
 }
 
@@ -8,15 +9,22 @@ ul {
   list-style-type: none;
   margin: 0;
   padding-top: 2.5vh;
-  padding-left: 5.1vw;
 }
 
 .icon {
   height: 5vh;
+  width: 10vw;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1vw;
+}
+
+.icon:hover {
+  width: 10vw;
+  background-color: rgb(238, 238, 238);
+  border-radius: 0.5vh;
+  padding-left: 1vw;
 }
 
 .inbox-icon {

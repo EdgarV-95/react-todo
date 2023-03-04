@@ -1,6 +1,8 @@
 .main-body {
   padding-top: 3.5vh;
   padding-left: 5vw;
+  min-width: 250px;
+  max-width: 350px;
 }
 
 .title-txt {
@@ -72,11 +74,13 @@ ul div.info {
 
 .select-priority > li {
   padding-left: 0.75vw;
+  font-weight: 350;
 }
 
 .select-priority > li:hover {
   border: 1px solid red;
   border-radius: 1vh;
+  padding: 0.25vw;
 }
 
 .details-tab {
