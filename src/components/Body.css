@@ -118,6 +118,7 @@ span {
 }
 
 textarea {
+  padding-left: 0.75vw;
   border-style: none;
   resize: none;
   overflow: hidden;
