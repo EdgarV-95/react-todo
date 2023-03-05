@@ -11,6 +11,15 @@ ul {
   padding-top: 2.5vh;
 }
 
+.clicked > .icon {
+  border-bottom: 1px solid rgb(150, 147, 147);
+  width: 70%;
+}
+
+.clicked > .icon > h4 {
+  font-weight: 400;
+}
+
 .icon {
   height: 5vh;
   display: flex;

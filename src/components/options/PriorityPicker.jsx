@@ -11,7 +11,7 @@ function DropdownList({
       <li
         key="0"
         onClick={(e) => {
-          onColorChange('blue');
+          onColorChange('rgb(64,115,214)');
           onPriorityPick(e);
           closeDropdown();
         }}
@@ -21,7 +21,7 @@ function DropdownList({
       <li
         key="1"
         onClick={(e) => {
-          onColorChange('orange');
+          onColorChange('rgb(244,156,24)');
           onPriorityPick(e);
           closeDropdown();
         }}
@@ -31,7 +31,7 @@ function DropdownList({
       <li
         key="2"
         onClick={(e) => {
-          onColorChange('red');
+          onColorChange('rgb(222,76,74)');
           onPriorityPick(e);
           closeDropdown();
         }}

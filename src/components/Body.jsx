@@ -280,9 +280,9 @@ export default function Body({ showBody, showToday, showWeek }) {
   }
 
   function updateColor(priority) {
-    if (priority === 'low') return 'blue';
-    if (priority === 'medium') return 'orange';
-    if (priority === 'high') return 'red';
+    if (priority === 'low') return 'rgb(64,115,214)';
+    if (priority === 'medium') return 'rgb(244,156,24)';
+    if (priority === 'high') return 'rgb(222,76,74)';
   }
 
   // Handle DETAILS

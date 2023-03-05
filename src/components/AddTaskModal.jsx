@@ -40,9 +40,9 @@ export default function AddTaskModal({ closeModal }) {
 
   let flagColor;
   function updateColor(priority) {
-    if (priority === 'low') flagColor = 'blue';
-    if (priority === 'medium') flagColor = 'orange';
-    if (priority === 'high') flagColor = 'red';
+    if (priority === 'low') flagColor = 'rgb(64,115,214)';
+    if (priority === 'medium') flagColor = 'rgb(244,156,24)';
+    if (priority === 'high') flagColor = 'rgb(222,76,74)';
   }
 
   function handleSubmit() {

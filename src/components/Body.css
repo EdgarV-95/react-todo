@@ -78,7 +78,7 @@ ul div.info {
 }
 
 .select-priority > li:hover {
-  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(222, 77, 75);
   border-radius: 1vh;
 }
 
@@ -126,7 +126,12 @@ textarea {
 /* adjust for smaller desktop screens */
 @media only screen and (max-width: 1366px) {
   .select-priority {
+    width: 9vw;
     right: calc(18vw + 180px);
+  }
+
+  .details-tab {
+    padding-left: 2.5vw;
   }
 }
 
@@ -134,5 +139,9 @@ textarea {
 @media only screen and (max-width: 1024px) {
   .select-priority {
     right: calc(12.5vw + 130px);
+  }
+
+  .details-tab {
+    padding-left: 3.5vw;
   }
 }
